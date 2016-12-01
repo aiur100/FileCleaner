@@ -43,10 +43,10 @@ try{
 }
 catch(RawFileException $e){
     echo "\n ERROR:";
-    trigger_error($e->getMessage());
+    echo $e->getMessage();
 }
 catch(Exception $e){
     echo "\n ERROR:";
-    trigger_error($e->getMessage());
+    echo $e->getMessage();
 }
 
