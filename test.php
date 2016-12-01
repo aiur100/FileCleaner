@@ -36,7 +36,7 @@ try{
     $i              = 0;
     $final          = correctIt($FileData,$RefColCount);
     //print_r($final);
-    newFile("CLEANED_".$file,$final);
+    newFile("CLEANED_DCS.csv",$final);
 
 
 }
