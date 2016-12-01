@@ -44,9 +44,11 @@ try{
 catch(RawFileException $e){
     echo "\n ERROR:";
     echo $e->getMessage();
+    echo "\n";
 }
 catch(Exception $e){
     echo "\n ERROR:";
     echo $e->getMessage();
+    echo "\n";
 }
 
