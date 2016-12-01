@@ -19,7 +19,7 @@ function correctIt($data,$refCount){
 function newFile($fileName,$data){
     $fp = fopen($fileName, 'w');
     foreach ($data as $fields) {
-        fputcsv($fp, $fields,"\t");
+        fputs($fp, implode($fields, "\t"));
     }
     fclose($fp);
 }
@@ -35,8 +35,8 @@ try{
     $RefColCount    = count($FileData[0]);
     $i              = 0;
     $final          = correctIt($FileData,$RefColCount);
-    print_r($final);
-    newFile("CLEANED".$file,$final);
+    //print_r($final);
+    newFile("CLEANED_".$file,$final);
 
 
 }
