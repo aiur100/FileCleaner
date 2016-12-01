@@ -16,8 +16,8 @@ function correctIt($data,$refCount){
     return $final;
 }
 
-function newFile($fileName,$data){
-    $fp = fopen($fileName, 'w');
+function newFile($fileName,$data,$saveTo){
+    $fp = fopen($saveTo.'/'.$fileName, 'w');
     foreach ($data as $fields) {
         fputs($fp, implode($fields, "\t"));
     }
@@ -27,7 +27,8 @@ function newFile($fileName,$data){
 
 try{
     $file       = $argv[1];
-    echo 'File Requested: '.$file;
+    $saveTo     = $argv[2];
+    echo 'File Requested: '.$file."\n";
     sleep(2);
     $RawFile        = new RawFile($file);
     $DataFile       = new DataFile($RawFile,"\t");
@@ -36,14 +37,16 @@ try{
     $i              = 0;
     $final          = correctIt($FileData,$RefColCount);
     //print_r($final);
-    newFile("CLEANED_DCS.csv",$final);
+    newFile("CLEANED_DCS.csv",$final,$saveTo);
 
 
 }
 catch(RawFileException $e){
+    echo "\n";
     trigger_error($e->getMessage());
 }
 catch(Exception $e){
+    echo "\n";
     trigger_error($e->getMessage());
 }
 
